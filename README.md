@@ -1,4 +1,6 @@
 # Conversor - Moeda/Temperatura
+![guia-cursos-one](https://user-images.githubusercontent.com/93354240/224237578-c4620f82-1046-4014-878d-ca847e3fc0a3.png)
+
 ## Objetivo Proposto
 Nesta oportunidade foi solicitado para nós Devs a criação de um conversor de moeda utilizando a linguagem Java. As características solicitadas por nosso cliente são as seguintes:
 
