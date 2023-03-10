@@ -3,11 +3,27 @@ package Componetes;
 import javax.swing.*;
 
 public class Temperatura {
-    private double temp = 0;
+    private double temp;
     private String tipo = "C";
 
-    public void setTemp() {
-        this.temp = this.temp = Double.parseDouble(JOptionPane.showInputDialog("Digite a temperatura"));
+    public Temperatura(){
+        setTipo();
+        if(!this.tipo.equals("Saida")){
+            setTemp();
+        }
+        menuTemperatura();
+    }
+
+    public void setTemp(){
+        while (true){
+            try {
+                temp = Double.parseDouble(JOptionPane.showInputDialog("Digite a temperatura"));
+                break;
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Valor nulo coloque alguem valor numerico para conversão");
+            }
+
+        }
     }
 
     public void setTipo() {
@@ -15,47 +31,34 @@ public class Temperatura {
         int selectedValue = JOptionPane.showOptionDialog(null, "O valor esta em Celsius ou Fahrenheit", "Aviso",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                 null, options, options[0]);
+        System.out.println(selectedValue);
         if(selectedValue == 0){
             this.tipo = "C";
-        } else {
+        } else if(selectedValue == 1){
             this.tipo = "F";
+        } else {
+            this.tipo = "Saida";
         }
     }
 
-    @Override
-    public String toString() {
-        return "Temperatura{" +
-                "temp=" + temp +
-                ", tipo='" + tipo + '\'' +
-                '}';
-    }
-
-    public Temperatura(){
-        setTipo();
-        setTemp();
-        menuTemperatura();
-    }
-
     private void menuTemperatura(){
-        double valor;
-        if(this.tipo == "C"){
+
+        if(this.tipo.equals("C")){
             transformeParaF();
-        } else {
+        } else if(this.tipo.equals("F")) {
             transformeParaC();
         }
     }
 
     public void transformeParaF(){
-        String texto = "";
         double tempF = (this.temp * 1.8) + 32;
-        texto = "Valor Atual em celcius: " + this.temp + "C - Valor em fahrenheit: " + tempF + "F";
+        String texto = "Valor Atual em celcius: " + this.temp + "C - Valor em fahrenheit: " + tempF + "F";
         JOptionPane.showMessageDialog(null,texto,"Resultado",JOptionPane.WARNING_MESSAGE);
     }
 
     public void transformeParaC(){
-        String texto = "";
         double tempC = (this.temp - 32)/1.8;
-        texto = "Valor Atual em fahrenheit: " + this.temp + "F - Valor em Celcius: " + tempC + "C";
+        String texto = "Valor Atual em fahrenheit: " + this.temp + "F - Valor em Celcius: " + tempC + "C";
         JOptionPane.showMessageDialog(null,texto,"Resultado",JOptionPane.WARNING_MESSAGE);
     }
 }
