@@ -24,11 +24,12 @@ public class SystemaVisual {
     }
 
     public static boolean continuarSistema(){
-        Object[] options = { "Sim", "Não"};
+        Object[] options = { "Sim", "Não" };
         int escolha = JOptionPane.showOptionDialog(null, "Deseja continuar", "Aviso",
                 JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE,
                 null, options, options[0]);
-        return escolha == 1;
+        System.out.println(escolha);
+        return escolha == 1 || escolha == -1;
     }
 
     public static void saidaSistema(){

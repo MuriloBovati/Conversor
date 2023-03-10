@@ -26,7 +26,19 @@ public class Moeda {
                 itens, itens [0]);
     }
     public void conversor(String conversao){
-        valor = Double.parseDouble(JOptionPane.showInputDialog("Digite o valor que deseja " + conversao.toLowerCase()));
+        while(true){
+            String valorEntrada = JOptionPane.showInputDialog("Digite o valor que deseja " + conversao.toLowerCase());
+            if (valorEntrada.equals("")) {
+                JOptionPane.showMessageDialog(null,"Valor invalido coloque um valor numerico","Aviso",JOptionPane.ERROR_MESSAGE);
+            } else {
+                try{
+                    valor = Double.parseDouble(valorEntrada);
+                    break;
+                }catch(NumberFormatException e){
+                    JOptionPane.showMessageDialog(null,"Valor invalido deve ser colocar apenas valores numericos","Aviso",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
         switch (conversao) {
             case "Converter de Reais para Dólar" -> realDolar("real");
             case "Converter de Reais para Euro" -> realEuro("real");
